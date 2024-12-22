@@ -1,7 +1,10 @@
 package aoc
 
 import (
+	"fmt"
 	"iter"
+	"maps"
+	"slices"
 )
 
 type Number interface {
@@ -44,6 +47,10 @@ func (s Set[T]) Has(value T) bool {
 
 func (s Set[T]) Delete(value T) {
 	delete(s, value)
+}
+
+func (s Set[T]) ToSlice() []T {
+	return slices.Collect(maps.Keys(s))
 }
 
 type Map[T any] struct {
@@ -99,4 +106,11 @@ func (m Map[T]) Copy() Map[T] {
 	cp := make([]T, len(m.data))
 	copy(cp, m.data)
 	return NewMapFromSlice(cp, m.length)
+}
+
+func (m Map[T]) Show() {
+	for i := range len(m.data) / m.length {
+		s := fmt.Sprintf("%v", m.data[i*m.length:(i+1)*m.length])
+		fmt.Println(s[1 : len(s)-1])
+	}
 }

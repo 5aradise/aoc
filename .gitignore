@@ -1,2 +1,6 @@
 example.txt
 input.txt
+
+# macOS system files
+.DS_Store
+.keep

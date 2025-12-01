@@ -1,6 +1,13 @@
 package aoc
 
-import "math"
+import (
+	"fmt"
+	"math"
+)
+
+func FormatAnswers(ans1, ans2 any) string {
+	return fmt.Sprintf("1: %v\n2: %v", ans1, ans2)
+}
 
 func Sum[N Number](sl []N) N {
 	var sum N

@@ -17,6 +17,14 @@ func Sum[N Number](sl []N) N {
 	return sum
 }
 
+func Reduce[S ~[]E, E any, T any](s S, init T, proc func(acc T, v E) T) T {
+	res := init
+	for _, v := range s {
+		res = proc(res, v)
+	}
+	return res
+}
+
 var Epsilon = 0.0001
 
 func IsInteger(f float64) bool {
